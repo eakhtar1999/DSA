@@ -6,7 +6,6 @@ class Solution {
         int len1= nums1.length, len2 = nums2.length;
         int left = 0, right= len1;
 
-         System.out.println(nums1.length+" "+ nums2.length);
         while(left<=right){
             int part1 = (left + right)/2;
             int part2 = (len1 + len2 +1)/2 - part1;
@@ -15,8 +14,6 @@ class Solution {
             int rmin1= (part1 == len1) ? Integer.MAX_VALUE : nums1[part1] ;
             int lmax2 = (part2==0) ? Integer.MIN_VALUE : nums2[part2 -1 ];
             int rmin2 = (part2 == len2) ? Integer.MAX_VALUE : nums2[part2];
-
-            System.out.println(lmax1+" "+ rmin1+" "+ lmax2+" "+ rmin2+" ");
 
             if(lmax1 <= rmin2 && lmax2<= rmin1){
                 if((len1 + len2)%2 == 0){
@@ -35,7 +32,3 @@ class Solution {
         return 0.0;
     }
 }
-
-// [1 4  | 6 12 14]
-// [2 5|  29]. 
-// [ 1 2 4 5 | 6 12 14 29]. = 5.5
