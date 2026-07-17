@@ -1,23 +1,19 @@
 class RecentCounter {
-    Deque<Integer> q = new ArrayDeque<>();
-    int counter;
+    private static final int[] records = new int[10000];
+    private int start;
+    private int end;
 
     public RecentCounter() {
-        counter = 0;
+        start = 0;
+        end = 0;
     }
     
     public int ping(int t) {
-        q.addLast(t);
-        counter = 0;
-        int thresold= t-3000;
-        for(int n :q){
-            if(n >= thresold){
-                counter++;
-            }else{
-                q.removeFirst();
-            }
+        while(start < end && (t-records[start] > 3000)){
+            start++;
         }
-        return counter;
+        records[end++] = t;
+        return end-start;
     }
 }
 
