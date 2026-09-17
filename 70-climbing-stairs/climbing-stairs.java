@@ -1,13 +1,14 @@
 class Solution {
     public int climbStairs(int n) {
-        if(n<=2) return n;
-        // return climbStairs(n-1) + climbStairs(n-2);
+        Map<Integer, Integer> memo = new HashMap<>();   // generic type declared, not raw Map
+        return util(n, memo);
+    }
 
-        int[] dp = new int[n+1];
-        dp[0]=0; dp[1]=1; dp[2]=2;
-        for(int i=3; i<=n; i++){
-            dp[i] = dp[i-1] + dp[i-2];
+    private int util(int n, Map<Integer, Integer> memo) {
+        if (n <= 2) return n;                            // base case FIRST, matches recursion
+        if (!memo.containsKey(n)) {                       // containsKey, not contains
+            memo.put(n, util(n - 1, memo) + util(n - 2, memo));
         }
-        return dp[n];
+        return memo.get(n);
     }
 }
