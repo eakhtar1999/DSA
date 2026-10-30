@@ -23,7 +23,7 @@ class Solution {
         p1 = p1.next;
         p2 = p2.next;
     }
-    reverse(second);                                  // restore the second half
+    //reverse(second);                                  // restore the second half not necessary
     return ok;
 }
 private ListNode reverse(ListNode head) {
